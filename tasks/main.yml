@@ -18,6 +18,13 @@
 - name: Install ruby-switch
   apt: name=ruby-switch state=present
 
+- name: check default ruby version
+  shell: ruby -v
+  register: current_ruby_version
+  changed_when: False
+  always_run: yes
+
 - name: Set default ruby
   sudo: true
   shell: ruby-switch --set "{{ ruby.default }}"
+  when: current_ruby_version != {{ ruby.default[4..] }}
