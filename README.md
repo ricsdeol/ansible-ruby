@@ -12,7 +12,7 @@ Role Variables
 --------------
 
 ruby:
-  default: ruby2.2
+  default: 2.2
   versions:
     - ruby2.2
 

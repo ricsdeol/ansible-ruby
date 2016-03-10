@@ -26,5 +26,5 @@
 
 - name: Set default ruby
   sudo: true
-  shell: ruby-switch --set "{{ ruby.default }}"
-  when: current_ruby_version != {{ ruby.default[4..] }}
+  shell: ruby-switch --set "ruby{{ ruby.default }}"
+  when: ruby.default not in current_ruby_version.stdout
