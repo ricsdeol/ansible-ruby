@@ -1,7 +1,9 @@
 ---
+- name: update apt-get
+  apt: update_cache=yes
+
 - name: Install software-properties-common
   apt: name=software-properties-common
-    update_cache=yes
 
 - name: update repository
   apt_repository: repo='ppa:brightbox/ruby-ng' state=present
@@ -11,7 +13,6 @@
 
 - name: Install rubies
   apt: name={{ item }}
-    update_cache=yes
   with_items: "{{ ruby.versions }}"
 
 - name: Install ruby-switch
