@@ -19,4 +19,4 @@
 
 - name: Set default ruby
   sudo: true
-  command: ruby-switch --set "{{ ruby.default }}"
+  shell: ruby-switch --set "{{ ruby.default }}"
