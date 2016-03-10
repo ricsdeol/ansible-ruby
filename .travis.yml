@@ -1,35 +1,20 @@
----
 language: python
-python: "2.7"
-
-# Use the new container infrastructure
+python: '2.7'
 sudo: required
-
-# Install ansible
 addons:
   apt:
     packages:
     - python-pip
-
 install:
-  # Install ansible
-  - pip install ansible
-
-  # Check ansible version
-  - ansible --version
-
-  # Create ansible.cfg with correct roles_path
-  - printf '[defaults]\nroles_path=../' >ansible.cfg
-
+- pip install ansible
+- ansible --version
+- printf '[defaults]\nroles_path=../' >ansible.cfg
 script:
-  # Basic role syntax check
-  - ansible-playbook tests/test.yml -i tests/inventory --syntax-check
-  - ansible-playbook tests/test.yml -i tests/inventory --connection=local
-  - >
-    ansible-playbook tests/test.yml -i tests/inventory --connection=local
-    | grep -q 'changed=0.*failed=0' && (echo 'Idempotence test: pass' && exit 0) || (echo 'Idempotence test: fail' && exit 1)
-
+- ansible-playbook tests/test.yml -i tests/inventory --syntax-check
+- ansible-playbook tests/test.yml -i tests/inventory --connection=local
+- |
+  ansible-playbook tests/test.yml -i tests/inventory --connection=local | grep -q 'changed=0.*failed=0' && (echo 'Idempotence test: pass' && exit 0) || (echo 'Idempotence test: fail' && exit 1)
 notifications:
   webhooks: https://galaxy.ansible.com/api/v1/notifications/
   slack:
-    secure: JMY55lydSLyPAOtQUeR091svEjZ/AVanCZkx6kW4QPN3pdjeId0ICTIuImE88WsaLliBub1HVINiK2o4v2TWi8jGVoHRzGxFLbSt7L8Mo6E0xZOu3bWiuleSzbLjeS3KyleBordFO+FY5nOLvNBiK8KCYIvYZZITkZ7vczbYww3feOGrgzdeela6nIX1V16/F2CsNR/xHrwEIAydeqlIcszg52N7WI356Z5jZr9jSpo/5ko/On9rwdbO5vtHBBHIGrqgf0FaHgUM/ekkZ+Y5DT1EJrZ9Sp0POxLbuXj+8aiyBw6X7KkarAMnYEm6+Bl5JJ+4tmMK0FUMRyjpa90eek4mWGDzf8Bu0SEbHP2x0Vlf+3YwcjcGnlkgFkHDB/w3EYuHo9sZAUJEnzVQthmvnY6s7zzGZbXBlP5I4sOzfqW7gU5/FepPtF/mv3KmEaBHAHA/Tnil5C3TO581wKMMUerBanHm+XrEUH40Q8EkClqWhhrfrWhIZBJQBTftfDSPkZwKz/Sh88Rs/NklB+aafFiZHKFGXuh605QJwqFlZLQVZZkECYRKmqTZN0r//f/I7eYKkoDXIXBlKDWFWYXjVxv0gKqbKIJ0fbwk1TD2o/OJopsUaUPYXfhd5bY4aEXqBaTECUDtCtmz7LhODTD/nPC8S9PtPXdcCckRtXSqXZM=
+    secure: fg8z8fuYOwHH5iaPSWOyx+UdaB2FnmVhUDw8WsRXsBMo6+GG82NmvLpgk0bmWogZe1Mk8gPE9GNKvJwuoOpaSo3T1Vz1Be+oPxZSvvrbMgQoJt/S3xwIt9tGHHVhuJ74iwaUvd07a9DH33L8LEkLrHQlmb3MkdV4K6uBTm+b/p9W1tPREN6S02AIJhudPpe9Kq2ggSl7UqNKRqvpP5oYjlCjY7OM4HNyAyM+tzJ/qXdG3Gjbrj51pefAuT4wsRy4obdLzk2CrEb1Ao1LDzBTOswQhMeU/Q6SHelzsv+768gg3QvsG0PvEMc+/wxSvC/aYhwVjjbfKGSgcZx0twB+ilVqXEaTHZor6d6JluWJ+6XED+mNN03zyQB3bU/5rhaX9QE6KBgQbQlIlGmgoH4r4YENj4p8B/5pV5OMs0QGkpVJk3xlK2svEfGM1TYUsOQCb84v70u3z6Qix2n733s1vG4a9cFqm3Ot/BH/kmsHzVqJILQfbXh/somOoonnOontvZWuJ6v/Qn7ELiTZ/gBJ53Jvb40b2uCFSuWExpQYvEwWBcAR1lnmtejCwdGP854eVKteWGrQr/fsPv1nQqPDOFNxc/MqF29CNJg+GY6eiJ+VAKfyvr2R641iTMR0dKEmRGf99kdIxr+wqSLnV4FdNhK/CG4IGpJJwYGXtD0ybGA=
