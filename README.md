@@ -6,7 +6,7 @@ Ruby installer
 Requirements
 ------------
 
-Build essentials
+N/A
 
 Role Variables
 --------------
