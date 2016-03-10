@@ -1,0 +1,7 @@
+---
+# defaults file for ansible-ruby
+ruby:
+  default: ruby2.2
+  versions:
+    - ruby2.2
+    - ruby2.3
