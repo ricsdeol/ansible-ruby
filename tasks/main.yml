@@ -25,6 +25,6 @@
   always_run: yes
 
 - name: Set default ruby
-  sudo: true
+  become: yes
   shell: ruby-switch --set "ruby{{ ruby.default }}"
   when: ruby.default not in current_ruby_version.stdout
